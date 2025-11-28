@@ -1,26 +1,12 @@
 @baseUrl = http://localhost:3333
 
-### Send push notification
-POST {{baseUrl}}/notification
-Content-Type: application/json
-
-{
-  "title": "Test Notification",
-  "body": "This is a test notification"
-}
-
 ### Schedule push notification
 POST {{baseUrl}}/notification/schedule
 Content-Type: application/json
 
 {
-  "title": "Scheduled Notification 00:00",
+  "title": "Scheduled Notification 01:00",
   "body": "This is a scheduled notification",
-  "scheduledAt": "2025-11-28T03:00:00.000Z",
-  "topic": "custom-topic"
+  "scheduledAt": "2025-11-28T04:00:00.000Z",
+  "topic": "all-ios"
 }
-
-###
-
-GET {{baseUrl}}/notification/schedule
-Content-Type: application/json

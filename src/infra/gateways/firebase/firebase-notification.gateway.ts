@@ -51,13 +51,16 @@ export class FirebaseNotificationGateway
     return this.app;
   }
 
-  async sendPushNotification(title: string, body: string): Promise<void> {
+  async sendPushNotification(
+    topic: string,
+    { title, body }: { title: string; body: string },
+  ): Promise<void> {
     if (!this.messaging) {
       throw new FirebaseModuleNotInitializedError('messaging');
     }
 
     await this.messaging.send({
-      topic: 'all-ios',
+      topic,
       notification: { title, body },
     });
   }

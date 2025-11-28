@@ -1,5 +1,3 @@
-import { Result } from '../result';
-
 export enum SchedulerNames {
   SCHEDULED_PUSH_NOTIFICATION = 'scheduled-push-notification',
 }

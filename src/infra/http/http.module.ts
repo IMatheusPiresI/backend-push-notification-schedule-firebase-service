@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { SendPushNotificationController } from './controllers/send-push-notification.controller';
 import { FirebaseModule } from '../gateways/firebase/firebase.module';
 import { SendPushNotificationUseCase } from '@/domain/push-notification/application/use-cases/send-push-notification-use-case';
 import { DatabaseModule } from '../database/database.module';
@@ -10,10 +9,7 @@ import { SchedulePushNotificationUseCase } from '@/domain/push-notification/appl
 
 @Module({
   imports: [FirebaseModule, DatabaseModule, SchedulerModule],
-  controllers: [
-    SendPushNotificationController,
-    SchedulePushNotificationController,
-  ],
+  controllers: [SchedulePushNotificationController],
   providers: [
     SendPushNotificationUseCase,
     SchedulePushNotificationUseCase,

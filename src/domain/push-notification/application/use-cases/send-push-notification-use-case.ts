@@ -10,11 +10,15 @@ export class SendPushNotificationUseCase {
   constructor(private readonly notificationService: NotificationService) {}
 
   async execute(
+    topic: string,
     title: string,
     body: string,
   ): Promise<Result<SendPushNotificationGenericError, void>> {
     try {
-      await this.notificationService.sendPushNotification(title, body);
+      await this.notificationService.sendPushNotification(topic, {
+        title,
+        body,
+      });
 
       this.logger.log(`Push notification sent: ${title}`);
       return success();

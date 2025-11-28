@@ -56,6 +56,7 @@ export class RegisterCronJobSchedulePushNotificationUseCase {
               currentDate.getTime() - ONE_HOUR_IN_MILLISECONDS
           ) {
             const result = await this.sendPushNotificationUseCase.execute(
+              scheduledPushNotification.topic,
               scheduledPushNotification.title,
               scheduledPushNotification.body,
             );
