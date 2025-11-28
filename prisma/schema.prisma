@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+}
+
+model NotificationScheduled {
+  id              String   @id @default(uuid()) @map("id")
+  scheduledAt     DateTime @map("scheduled_at")
+  title           String @map("title")
+  body            String @map("body")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  topic           String @map("topic")
+  status          NotificationStatus @default(PENDING) @map("status")
+
+  @@map("notification_scheduled")
+}
